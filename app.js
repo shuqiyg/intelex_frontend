@@ -84,7 +84,7 @@ app.get("/users", (req, res) => {
 
 //quering leaves
 
-app.get("/leaves", (req, res) => {
+app.get("/leaveReport", (req, res) => {
     pool.getConnection((err, connection) => {
         
         if(err) throw err;
