@@ -95,11 +95,13 @@ app.get("/leaveReport", (req, res) => {
         const yyyy = date.getFullYear();
         let today ="";
         if(dd<10){
-          today  = yyyy.toString()+mm.toString()+"0" + dd.toString();
+          today  = yyyy.toString() + mm.toString()+"0" + dd.toString();
+        }else if(mm<10){
+            today  = yyyy.toString() +"0" + mm.toString()+ dd.toString();
         }else{
             today = yyyy.toString()+mm.toString()+dd.toString();
         }
-         
+
         console.log(today);
         connection.query(`SELECT u.firstname, u.lastname,u.email,l.startdate,l.enddate,l.cause,l.startdatetype,l.enddatetype
         FROM users u JOIN leaves l
