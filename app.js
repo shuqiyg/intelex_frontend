@@ -94,11 +94,15 @@ app.get("/leaveReport", (req, res) => {
         const mm = date.getMonth() + 1;
         const yyyy = date.getFullYear();
         let today ="";
-        if(dd<10){
-          today  = yyyy.toString() + mm.toString()+"0" + dd.toString();
-        }else if(mm<10){
+        if(dd<10 && mm<10){
+          today  = yyyy.toString() + "0" + mm.toString()+"0" + dd.toString();
+        }
+        else if(mm<10){
             today  = yyyy.toString() +"0" + mm.toString()+ dd.toString();
-        }else{
+        }else if(dd<10){
+            today  = yyyy.toString() + mm.toString()+ "0" + dd.toString();
+        }
+        else{
             today = yyyy.toString()+mm.toString()+dd.toString();
         }
 
