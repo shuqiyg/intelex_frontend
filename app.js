@@ -110,7 +110,7 @@ app.get("/leaveReport", (req, res) => {
         connection.query(`SELECT u.firstname, u.lastname,u.email,l.startdate,l.enddate,l.cause,l.startdatetype,l.enddatetype
         FROM users u JOIN leaves l
         ON u.id=l.employee
-        WHERE u.active = '1' and l.status = '3' and ((l.startdate=${today}) or (l.startdate < ${today} and l.enddate > ${today}))`, (err, rows) => {
+        WHERE u.active = '1' and l.status = '3' and ((l.startdate=${today}) or (l.startdate < ${today} and l.enddate >= ${today}))`, (err, rows) => {
             connection.release();
             if(err) throw err;
             console.log(rows);
